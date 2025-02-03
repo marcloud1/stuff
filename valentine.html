@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        .button-container button {
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .yes { background-color: lightgreen; }
+        .no { background-color: lightcoral; }
+    </style>
+</head>
+<body>
+    <div class="card" id="pookieCard">
+        <h2>hi pookie!</h2>
+        <button onclick="nextCard()">Click Me</button>
+    </div>
+    <div class="card hidden" id="questionCard">
+        <h2>be my valentine?</h2>
+        <div class="button-container">
+            <button class="yes" onclick="showResponse('yes')">Yes</button>
+            <button class="no" onclick="showResponse('no')">No</button>
+        </div>
+    </div>
+    <div class="card hidden" id="yesCard">
+        <h2>slay! 💅🏻</h2>
+    </div>
+    <div class="card hidden" id="noCard">
+        <h2>try again ☹️</h2>
+        <button onclick="goBack()">Back</button>
+    </div>
+
+    <script>
+        function nextCard() {
+            document.getElementById('pookieCard').classList.add('hidden');
+            document.getElementById('questionCard').classList.remove('hidden');
+        }
+
+        function showResponse(answer) {
+            document.getElementById('questionCard').classList.add('hidden');
+            if (answer === 'yes') {
+                document.getElementById('yesCard').classList.remove('hidden');
+            } else {
+                document.getElementById('noCard').classList.remove('hidden');
+            }
+        }
+
+        function goBack() {
+            document.getElementById('noCard').classList.add('hidden');
+            document.getElementById('questionCard').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
